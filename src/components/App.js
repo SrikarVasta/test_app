@@ -9,10 +9,9 @@ import VisibleTables from '../containers/VisibleTables'
 
 const App = () => (
     <div>
-        <AddTodo/>
+        {/* <AddTodo/> */}
         <AddTable/>
-        
-        <VisibleTodoList/>
+        {/* <VisibleTodoList/> */}
         <VisibleTables/>
         
         

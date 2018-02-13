@@ -3,13 +3,13 @@ import {connect} from 'react-redux'
 import {addTable} from '../actions'
 import TableCreateDialogue from './TableCreateDialogue'
 
-let AddTable = ({dispatch}) => {
+let AddTable = ({dispatch,tables}) => {
     let input1
     let input2
    
     return (
         <div>
-            <form
+            {tables.length==0?(<form
                 onSubmit={e => {
                 e.preventDefault()
                 
@@ -17,18 +17,34 @@ let AddTable = ({dispatch}) => {
                 input2.value = ''
                 
             }}>
-                <input ref={node => {
+                <input  type="number" ref={node => {
                     input2 = node
                 }}/>
                 <button type="submit" >
                     Add Table
                 </button>
-            </form>
-            <TableCreateDialogue/>
+            </form>):""}
+            
+            <TableCreateDialogue tables={tables}/>
             
         </div>
     )
 }
-AddTable = connect()(AddTable)
-
+const getVisibleTables = (tables, filter) => {
+    switch (filter) {
+        // case 'SHOW_COMPLETED':
+        //     return todos.filter(t => t.completed)
+        // case 'SHOW_ACTIVE':
+        //     return todos.filter(t => !t.completed)
+        case 'SHOW_ALL':
+        default:
+            return tables
+    }
+}
+const mapStateToProps = state => {
+    return {
+        tables: getVisibleTables(state.tables)
+    }
+}
+AddTable = connect(mapStateToProps)(AddTable)
 export default AddTable

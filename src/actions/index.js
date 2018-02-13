@@ -18,12 +18,34 @@ export const addTable = (col) => {
     }
 }
 
-export const addHeader = (id,entries) => {
+export const addEntries = (id,entries) => {
     console.log(entries);
     return {
         type: 'CREATE_TABLE_ENTRIES',
         id: id,
         entries
+    }
+}
+export const addHeader = (id,headers) => {
+    console.log(headers);
+    return {
+        type: 'CREATE_TABLE_HEAD',
+        id: id,
+        headers
+    }
+}
+export const sort = (id,index) => {
+    return {
+        type: 'SORT_TABLE',
+        id: id,
+        index
+    }
+}
+export const paginate = (id,page) => {
+    return {
+        type: 'PAGINATE_TABLE',
+        id: id,
+        page
     }
 }
 

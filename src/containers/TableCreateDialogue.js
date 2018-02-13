@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {addTable} from '../actions'
 import store from '../reducers/index';
 import TableList from '../components/TableList'
-import {addHeader} from '../actions'
+import {addEntries,addHeader} from '../actions'
 
 class TableCreateDialogue extends React.Component {
     constructor(props) {
@@ -11,14 +11,13 @@ class TableCreateDialogue extends React.Component {
         this.state = {
             value0: ''
         };
-
-
         this.handleChange = this
             .handleChange
             .bind(this);
         this.handleSubmit = this
             .handleSubmit
             .bind(this);
+        
     }
 
     handleChange(event,i) {
@@ -35,24 +34,32 @@ class TableCreateDialogue extends React.Component {
     }
  
     handleSubmit(event) {
-        console.log(this.state, this.props.tables)
+        console.log('table', this.props.tables)
         let entries =[];   
         let lastTab = {};
         if(this.props.tables.length>0)     {
             lastTab = this.props.tables[ this.props.tables.length-1]
         }
         for (var key in this.state) {
-            console.log(this.state[key]);
             entries.push(this.state[key]);
         }
-        console.log("here",entries)        
-        this.props.dispatch(addHeader(lastTab.id,entries))
+        console.log("here",lastTab)
+        if(lastTab && lastTab.headers ){
+            if(lastTab.headers.length > 0){
+             this.props.dispatch(addEntries(lastTab.id,entries))            
+            }
+            else{
+             this.props.dispatch(addHeader(lastTab.id,entries))            
+            }
+        }
         
         if(entries.length === this.props.tables.col){
         }
         // alert('A name was submitted: ' + this.state.value);
+        
         event.preventDefault();
     }
+    
     render() {
         let entries = []
         if(this.props.tables.length>0){
@@ -60,11 +67,10 @@ class TableCreateDialogue extends React.Component {
             for(let i=0;i<max;i++){
                 let ele = (<input key={'s'+i} type="text" value={this.state['value'+i]} onChange={e=>{
                     this.handleChange(e,i)
-                }}/>)
+                }} required/>)
                 entries.push(ele);
             }
         }
-        console.log(entries)
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>
@@ -90,15 +96,7 @@ const getVisibleTables = (tables, filter) => {
             return tables
     }
 }
-let onFormSubmit=(event)=>{
-    console.log(event)
-  };
-let funk = (test)=>{
-    console.log(test);
-}
-
 const mapStateToProps = state => {
-    console.log(state)
     return {
         tables: getVisibleTables(state.tables)
     }
