@@ -10,7 +10,7 @@ const TableList = ({tables}) => (
 
 TableList.propTypes = {
     tables: PropTypes
-        .arrayOf(PropTypes.shape({id: PropTypes.number.isRequired, row: PropTypes.any.isRequired, col: PropTypes.any.isRequired}).isRequired)
+        .arrayOf(PropTypes.shape({id: PropTypes.number.isRequired, col: PropTypes.any.isRequired}).isRequired)
         .isRequired,
 }
 

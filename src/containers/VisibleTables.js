@@ -15,6 +15,7 @@ const getVisibleTables = (tables, filter) => {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         tables: getVisibleTables(state.tables)
     }
