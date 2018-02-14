@@ -21,7 +21,16 @@
 .App-intro {
   font-size: large;
 }
-
+.map-container{
+  position: relative;
+  height: 410px;
+}
+.map-container .map-overlay{
+  position: absolute;
+  z-index: 999;
+  bottom: 25px;
+  left: 30%;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

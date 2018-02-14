@@ -48,7 +48,13 @@ export const paginate = (id,page) => {
         page
     }
 }
-
+export const addMarker = (lat,lng) => {
+    return {
+        type: 'ADD_MARKER',
+        lat,
+        lng
+    }
+}
 export const setVisibilityFilter = filter => {
     return {type: 'SET_VISIBILITY_FILTER', filter}
 }
