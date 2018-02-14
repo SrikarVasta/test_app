@@ -13,9 +13,7 @@ let LeMap = ({todos, onTodoClick, maps, dispatch}) => {
       return(
             <div className="map-container">
             <div className="map-overlay">
-                <button> B 1</button>
-                <button> B 2</button>
-                <button> B 3</button>
+                
             </div>
             <MapComponent
               isMarkerShown={true}

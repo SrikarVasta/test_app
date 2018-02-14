@@ -23,7 +23,9 @@
 }
 .map-container{
   position: relative;
-  height: 410px;
+  height: auto;
+  margin: auto;
+  width: 50%;
 }
 form label{
   display: block;
