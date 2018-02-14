@@ -7,6 +7,8 @@ import VisibleTodoList from '../containers/VisibleTodoList'
 import VisibleTables from '../containers/VisibleTables'
 import LeMap from '../containers/LeMap'
 import GraphHere from '../containers/GraphHere'
+import Stats from '../containers/Stats'
+
 
 
 
@@ -26,7 +28,8 @@ const App = () => (
         <LeMap/>
         <h1>Graphs</h1>
         <GraphHere/>
-
+        <h1>Stats</h1>
+        <Stats/>
         
     </div>
 )
