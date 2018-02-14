@@ -58,7 +58,7 @@ let Tableino = ({ ...table,dispatch}) => {
                     
 
                     row.map(re=>{
-                        rowEl=rowEl.concat(<th>{re}</th>)
+                        rowEl=rowEl.concat(<td>{re}</td>)
                     })
                     rows= rows.concat(<tr>{
                         rowEl.map(ele=>ele)

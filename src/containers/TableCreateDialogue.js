@@ -65,20 +65,23 @@ class TableCreateDialogue extends React.Component {
         if(this.props.tables.length>0){
             let max = +this.props.tables[this.props.tables.length-1].col
             for(let i=0;i<max;i++){
-                let ele = (<input key={'s'+i} type="text" value={this.state['value'+i]} onChange={e=>{
+                let ele = (
+                <lable>
+                Field
+                <input key={'s'+i} type="text" value={this.state['value'+i]} onChange={e=>{
                     this.handleChange(e,i)
-                }} required/>)
+                }} required/>
+                </lable>
+                
+            )
                 entries.push(ele);
             }
         }
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    Name:
                     {entries.map(ent=>{
                         return(ent)
                     })}
-                </label>
                 <input type="submit" value="Submit"/>
             </form>
         );

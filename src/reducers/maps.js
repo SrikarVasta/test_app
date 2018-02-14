@@ -7,7 +7,10 @@ const maps = (state = [], action) => {
             return [
                 ...state, {
                     lat: action.lat,
-                    long: action.lng,
+                    lng: action.lng,
+                    lock:action.lock,
+                    text:action.text
+
                 }
             ]
         }

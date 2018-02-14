@@ -25,6 +25,15 @@
   position: relative;
   height: 410px;
 }
+form label{
+  display: block;
+  padding: 5px;
+}
+th{
+  background: gray;
+  color: white;
+  cursor: pointer;
+}
 .map-container .map-overlay{
   position: absolute;
   z-index: 999;

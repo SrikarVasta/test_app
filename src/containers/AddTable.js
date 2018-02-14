@@ -17,9 +17,13 @@ let AddTable = ({dispatch,tables}) => {
                 input2.value = ''
                 
             }}>
-                <input  type="number" ref={node => {
+                <label>
+                    Enter Number Of Columns
+                    <input  type="number" ref={node => {
                     input2 = node
                 }}/>
+                </label>
+                
                 <button type="submit" >
                     Add Table
                 </button>

@@ -19,11 +19,12 @@ let onMarkerClick= () => (marker) => {  //<- event object, not a marker object!
 const MapComponent = withScriptjs(withGoogleMap((props) =>
   {
     console.log(props)
+    let disable =  false
     return(<GoogleMap
             onClick={onMarkerClick}
             defaultOptions={{
-              scrollwheel :  false,
-              draggable: false
+              scrollwheel :  (props.lock==1)?false:true,
+              draggable: (props.lock==1)?false:true 
             }}
             
             defaultZoom={8}
@@ -38,7 +39,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
               labelAnchor={{ lat: props.lat2 || 0, lng: props.lng2 || 0 }}
               labelStyle={{backgroundColor: "yellow", fontSize: "32px", padding: "16px"}}
             >
-              <div>Hello There!</div>
+              <div>{props.text || 'hello'}</div>
             </MarkerWithLabel>
             
             ) : "" }
